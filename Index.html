@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>محول درجات الحرارة</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Cairo', sans-serif;
+      background: linear-gradient(135deg, #00c6ff, #0072ff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      direction: rtl;
+    }
+
+    .container {
+      background-color: #ffffffcc;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #004080;
+    }
+
+    input, select, button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      border-radius: 10px;
+      border: none;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+
+    input, select {
+      background-color: #f2f2f2;
+    }
+
+    button {
+      background-color: #0072ff;
+      color: white;
+      font-weight: bold;
+      transition: background 0.3s, transform 0.2s;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #005edb;
+      transform: scale(1.03);
+    }
+
+    .result {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #333;
+      min-height: 30px;
+    }
+
+    #langToggle {
+      margin-top: 20px;
+      background: #444;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2 id="title">محول درجات الحرارة</h2>
+    <input type="number" id="temperature" placeholder="أدخل الدرجة هنا">
+    <select id="direction">
+      <option value="toF">من مئوي إلى فهرنهايت</option>
+      <option value="toC">من فهرنهايت إلى مئوي</option>
+    </select>
+    <button onclick="convert()" id="convertBtn">تحويل</button>
+    <div class="result" id="result"></div>
+    <button id="langToggle" onclick="toggleLanguage()">English</button>
+  </div>
+
+  <script>
+    let currentLang = 'ar';
+
+    function convert() {
+      const temp = parseFloat(document.getElementById("temperature").value);
+      const dir = document.getElementById("direction").value;
+      let resultText = "";
+
+      if (isNaN(temp)) {
+        resultText = currentLang === 'ar' ? "من فضلك أدخل رقم صحيح." : "Please enter a valid number.";
+      } else {
+        if (dir === "toF") {
+          const f = (temp * 9 / 5) + 32;
+          resultText = currentLang === 'ar' ? `${temp}°C = ${f.toFixed(2)}°F` : `${temp}°C = ${f.toFixed(2)}°F`;
+        } else {
+          const c = (temp - 32) * 5 / 9;
+          resultText = currentLang === 'ar' ? `${temp}°F = ${c.toFixed(2)}°C` : `${temp}°F = ${c.toFixed(2)}°C`;
+        }
+      }
+
+      document.getElementById("result").innerText = resultText;
+    }
+
+    function toggleLanguage() {
+      currentLang = currentLang === 'ar' ? 'en' : 'ar';
+
+      const isArabic = currentLang === 'ar';
+
+      document.documentElement.lang = currentLang;
+      document.body.style.direction = isArabic ? 'rtl' : 'ltr';
+
+      document.getElementById("title").innerText = isArabic ? "محول درجات الحرارة" : "Temperature Converter";
+      document.getElementById("temperature").placeholder = isArabic ? "أدخل الدرجة هنا" : "Enter temperature";
+      document.getElementById("direction").options[0].text = isArabic ? "من مئوي إلى فهرنهايت" : "Celsius to Fahrenheit";
+      document.getElementById("direction").options[1].text = isArabic ? "من فهرنهايت إلى مئوي" : "Fahrenheit to Celsius";
+      document.getElementById("convertBtn").innerText = isArabic ? "تحويل" : "Convert";
+      document.getElementById("langToggle").innerText = isArabic ? "English" : "العربية";
+
+      document.getElementById("result").innerText = ""; // امسح النتيجة عند التبديل
+    }
+  </script>
+
+</body>
+</html>
