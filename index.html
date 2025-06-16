@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abdullah | Front-End Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: #fff;
+    }
+    header {
+      text-align: center;
+      padding: 2rem;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+    header p {
+      font-size: 1.2rem;
+      color: #ccc;
+    }
+
+    .btn {
+      background-color: #4ecdc4;
+      color: #000;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: bold;
+      margin: 0.5rem;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+      transition: 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #38b4a3;
+      transform: scale(1.05);
+    }
+
+    main {
+      max-width: 800px;
+      margin: auto;
+      padding: 1rem;
+    }
+    .project {
+      background-color: #1f2a38;
+      margin-bottom: 1.5rem;
+      border-radius: 10px;
+      padding: 1rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    }
+    .project h3 {
+      margin: 0 0 0.5rem;
+    }
+    .project p {
+      margin: 0.5rem 0;
+    }
+    .project a {
+      color: #4ecdc4;
+      text-decoration: none;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+    #contact-box {
+      display: none;
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: #1f2a38;
+      color: #fff;
+      border-radius: 15px;
+      padding: 1rem;
+      max-width: 300px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+      z-index: 999;
+      transition: all 0.3s ease;
+    }
+    #contact-box p {
+      margin: 0.5rem 0;
+    }
+    #contact-box button {
+      background-color: #4ecdc4;
+      border: none;
+      color: #000;
+      padding: 0.4rem 0.8rem;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 id="title">Abdullah</h1>
+    <p id="subtitle">Front-End Developer</p>
+    <button class="btn" id="lang-switch" onclick="toggleLang()">العربية</button>
+    <button class="btn" id="contact-btn" onclick="showContactBox()">Contact Me</button>
+    <div id="contact-box">
+      <p id="contact-msg">Feel free to contact me:</p>
+      <p><strong>Email:</strong> <span id="email">abdullah.dev2007@outlook.com</span></p>
+      <button onclick="closeContactBox()">Close</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="project">
+      <h3 id="proj2-title">Digital Clock</h3>
+      <p id="proj2-desc">Live time display with theme and language switching.</p>
+      <a href="https://codebyabdullah-code.github.io/Digital-clock/">View Project</a> | <a href="https://github.com/CodeByAbdullah-code/Digital-clock/blob/main/index.html">Code on GitHub</a>
+    </section>
+    <section class="project">
+      <h3 id="proj3-title">Password Generator</h3>
+      <p id="proj3-desc">Custom generation options with copy feature and multilingual support.</p>
+      <a href="https://codebyabdullah-code.github.io/Password-generator/">View Project</a> | <a href="https://github.com/CodeByAbdullah-code/Password-generator/blob/main/index.html">Code on GitHub</a>
+    </section>
+    <section class="project">
+      <h3 id="proj4-title">Weather App</h3>
+      <p id="proj4-desc">Attractive interface showing weather data in multiple languages.</p>
+      <a href="https://codebyabdullah-code.github.io/Temperature-converter/">View Project</a> | <a href="https://github.com/CodeByAbdullah-code/Temperature-converter/blob/main/index.html">Code on GitHub</a>
+    </section>
+    <section class="project">
+      <h3 id="proj5-title">X-O Game</h3>
+      <p id="proj5-desc">Fun and professional design with result tracking.</p>
+      <a href="https://codebyabdullah-code.github.io/X-O-Game/">View Project</a> | <a href="https://github.com/CodeByAbdullah-code/X-O-Game/blob/main/index.html">Code on GitHub</a>
+    </section>
+  </main>
+
+  <footer>
+    <span id="footer-text">&copy; 2025 Abdullah. All rights reserved.</span>
+  </footer>
+
+  <script>
+    let lang = 'en'; // تعريف المتغير الأساسي
+
+    function showContactBox() {
+      document.getElementById('contact-box').style.display = 'block';
+    }
+
+    function closeContactBox() {
+      document.getElementById('contact-box').style.display = 'none';
+    }
+
+    function toggleLang() {
+      if (lang === 'en') {
+        document.documentElement.lang = 'ar';
+        document.documentElement.dir = 'rtl';
+        document.getElementById('title').textContent = 'عبدالله';
+        document.getElementById('subtitle').textContent = 'مطور واجهات أمامية';
+        document.getElementById('proj2-title').textContent = 'ساعة رقمية';
+        document.getElementById('proj2-desc').textContent = 'عرض الوقت بشكل حي، مع تغيير الوضع واللغة.';
+        document.getElementById('proj3-title').textContent = 'مولد كلمات سر';
+        document.getElementById('proj3-desc').textContent = 'خيارات توليد مخصصة ونسخ تلقائي، مع دعم لغات.';
+        document.getElementById('proj4-title').textContent = 'تطبيق الطقس';
+        document.getElementById('proj4-desc').textContent = 'عرض بيانات الطقس مع واجهة جذابة وتعدد لغات.';
+        document.getElementById('proj5-title').textContent = 'لعبة X-O';
+        document.getElementById('proj5-desc').textContent = 'لعبة ممتعة بتصميم احترافي وتسجيل نتائج.';
+        document.getElementById('footer-text').textContent = '© 2025 عبدالله. جميع الحقوق محفوظة.';
+        document.getElementById('lang-switch').textContent = 'English';
+        document.getElementById('contact-btn').textContent = 'تواصل معايا';
+        document.getElementById('contact-msg').textContent = 'لا تتردد في التواصل معي:';
+        lang = 'ar';
+      } else {
+        document.documentElement.lang = 'en';
+        document.documentElement.dir = 'ltr';
+        document.getElementById('title').textContent = 'Abdullah';
+        document.getElementById('subtitle').textContent = 'Front-End Developer';
+        document.getElementById('proj2-title').textContent = 'Digital Clock';
+        document.getElementById('proj2-desc').textContent = 'Live time display with theme and language switching.';
+        document.getElementById('proj3-title').textContent = 'Password Generator';
+        document.getElementById('proj3-desc').textContent = 'Custom generation options with copy feature and multilingual support.';
+        document.getElementById('proj4-title').textContent = 'Weather App';
+        document.getElementById('proj4-desc').textContent = 'Attractive interface showing weather data in multiple languages.';
+        document.getElementById('proj5-title').textContent = 'X-O Game';
+        document.getElementById('proj5-desc').textContent = 'Fun and professional design with result tracking.';
+        document.getElementById('footer-text').textContent = '© 2025 Abdullah. All rights reserved.';
+        document.getElementById('lang-switch').textContent = 'العربية';
+        document.getElementById('contact-btn').textContent = 'Contact Me';
+        document.getElementById('contact-msg').textContent = 'Feel free to contact me:';
+        lang = 'en';
+      }
+    }
+  </script>
+</body>
+</html>
